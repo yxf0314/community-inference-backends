@@ -1,0 +1,7 @@
+backend_name: MinerU-custom
+default_run_command: mineru-vllm-server --port {{port}} --served-model-name {{model_name}}
+version_configs:
+  v2.6.4:
+    image_name: mineru:v2.6.4
+    custom_framework: cuda
+default_version: v1-custom
