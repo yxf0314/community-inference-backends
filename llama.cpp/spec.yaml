@@ -7,4 +7,4 @@ version_configs:
   v1-cpu:
     image_name: ghcr.io/ggml-org/llama.cpp:server
     custom_framework: cpu
-default_version: v1-custom
+default_version: v1-cpu
