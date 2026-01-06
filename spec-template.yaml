@@ -1,0 +1,74 @@
+# ----------------------------------------
+# GPUStack Community Inference Backend Spec
+# ----------------------------------------
+# This file defines how a backend integrates with GPUStack.
+# It is required for all community inference backends.
+#
+# Notes:
+# - version_configs defines one or more runnable backend versions
+# - GPUStack will NOT validate model correctness or inference quality
+# ----------------------------------------
+
+# Required.
+# Backend identifier shown in GPUStack.
+backend_name: vllm-custom
+
+# Optional but recommended.
+# Short description of this backend and its purpose.
+description: Custom vLLM backend maintained by the community
+
+# Optional but recommended.
+# Default backend version used when deploying without explicit selection.
+default_version: v0.13.0
+
+# Optional.
+# HTTP path used by GPUStack to check backend health.
+health_check_path: /v1/models
+
+# Optional.
+# Default backend parameters injected by GPUStack.
+default_backend_param:
+  - --host
+
+# Required.
+# Default command template to start the backend.
+# Available variables:
+#   {{model_path}}, {{port}}, {{worker_ip}}, {{model_name}}
+default_run_command: >
+  vllm serve {{model_path}}
+  --port {{port}}
+  --host {{worker_ip}}
+  --served-model-name {{model_name}}
+
+# Required.
+# Defines backend versions and their runtime configuration.
+version_configs:
+  v0.13.0:
+    # Required.
+    # Container image used for this backend version.
+    image_name: vllm/vllm-openai:v0.13.0
+
+    # Optional.
+    # Override entrypoint if the image requires it.
+    entrypoint: "/bin/sh -c"
+
+    # Optional.
+    # Command to run inside the container.
+    # If empty, default_run_command will be used.
+    run_command: >
+      vllm serve {{model_path}}
+      --port {{port}}
+      --host {{worker_ip}}
+      --served-model-name {{model_name}}
+
+    # Required.
+    # Hardware / framework type.
+    # Choose one of:
+    #   cuda | rocm | cann | dtk | musa | corex | maca | neuware | cpu
+    custom_framework: cuda
+
+  v0.12.0:
+    image_name: vllm/vllm-openai:v0.12.0
+    entrypoint:
+    run_command:
+    custom_framework: cuda

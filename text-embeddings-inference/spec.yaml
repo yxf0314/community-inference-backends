@@ -1,0 +1,37 @@
+backend_name: text-embeddings-inference-custom
+version_configs:
+  cpu-1.8:
+    image_name: ghcr.io/huggingface/text-embeddings-inference:cpu-1.8
+    run_command: ''
+    entrypoint: ''
+    custom_framework: cpu
+  cuda-sm89-1.8:
+    image_name: ghcr.io/huggingface/text-embeddings-inference:89-1.8
+    run_command: ''
+    entrypoint: ''
+    custom_framework: cuda
+  cuda-sm86-1.8:
+    image_name: ghcr.io/huggingface/text-embeddings-inference:86-1.8
+    run_command: ''
+    entrypoint: ''
+    custom_framework: cuda
+  cuda-sm80-1.8:
+    image_name: ghcr.io/huggingface/text-embeddings-inference:1.8
+    run_command: ''
+    entrypoint: ''
+    custom_framework: cuda
+default_version: cpu-1.8
+default_backend_param: []
+default_run_command: '--model-id {{model_path}} --port {{port}}'
+default_entrypoint: ''
+is_built_in: false
+description: null
+health_check_path: /health
+built_in_version_configs: {}
+framework_index_map:
+  cpu:
+    - cpu-1.8
+  cuda:
+    - cuda-sm80-1.8
+    - cuda-sm86-1.8
+    - cuda-sm89-1.8
