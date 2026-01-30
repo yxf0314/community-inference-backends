@@ -1,4 +1,4 @@
-backend_name: text-embeddings-inference-custom
+backend_name: text-embeddings-inference
 version_configs:
   cpu-1.8:
     image_name: ghcr.io/huggingface/text-embeddings-inference:cpu-1.8

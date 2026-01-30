@@ -1,4 +1,4 @@
-backend_name: paddlex-genai-custom
+backend_name: paddlex-genai
 version_configs:
   latest:
     image_name: >-

@@ -1,4 +1,4 @@
-backend_name: kokoro-custom
+backend_name: kokoro
 version_configs:
   latest:
     image_name: ghcr.io/remsky/kokoro-fastapi-gpu:latest

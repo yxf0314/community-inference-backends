@@ -1,4 +1,4 @@
-backend_name: llama.cpp-custom
+backend_name: llama.cpp
 version_configs:
   cuda:
     image_name: ghcr.io/ggml-org/llama.cpp:server-cuda

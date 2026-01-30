@@ -1,4 +1,4 @@
-backend_name: MinerU-custom
+backend_name: MinerU
 default_run_command: mineru-vllm-server --port {{port}} --served-model-name {{model_name}}
 version_configs:
   v2.7.0:
