@@ -10,6 +10,22 @@ OUTPUT_FILE = os.path.join(DIST_DIR, "community-inference-backends.yaml")
 # Max logo size in bytes (100KB)
 MAX_LOGO_SIZE = 100 * 1024 
 
+def remove_empty_values(data):
+    if isinstance(data, dict):
+        return {
+            k: remove_empty_values(v)
+            for k, v in data.items()
+            if v is not None and v != "" and v != [] and v != {}
+        }
+    elif isinstance(data, list):
+        return [
+            remove_empty_values(item)
+            for item in data
+            if item is not None and item != "" and item != [] and item != {}
+        ]
+    else:
+        return data
+
 def get_logo_base64(path):
     """Reads an image file and returns a base64 encoded data URI."""
     if not os.path.exists(path):
@@ -84,6 +100,7 @@ def main():
             else:
                 print(f"  - No logo found")
 
+            spec = remove_empty_values(spec)
             backends.append(spec)
             
         except Exception as e:

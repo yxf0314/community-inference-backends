@@ -2,19 +2,9 @@ backend_name: kokoro
 version_configs:
   latest:
     image_name: ghcr.io/remsky/kokoro-fastapi-gpu:latest
-    run_command: null
-    entrypoint: null
     custom_framework: cuda
-default_version: ''
-default_backend_param: []
-default_run_command: >-
-  python -m uvicorn api.src.main:app --host 0.0.0.0 --port {{port}} --log-level
-  debug
-default_entrypoint: ''
+default_run_command: python -m uvicorn api.src.main:app --host 0.0.0.0 --port {{port}} --log-level debug
 is_built_in: false
-description: null
-health_check_path: null
-built_in_version_configs: {}
 framework_index_map:
   cuda:
     - latest

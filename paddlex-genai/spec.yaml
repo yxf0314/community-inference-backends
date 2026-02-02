@@ -1,35 +1,18 @@
 backend_name: paddlex-genai
 version_configs:
   latest:
-    image_name: >-
-      ccr-2vdh3abv-pub.cnc.bj.baidubce.com/paddlepaddle/paddlex-genai-vllm-server:latest
-    run_command: ''
-    entrypoint: null
+    image_name: ccr-2vdh3abv-pub.cnc.bj.baidubce.com/paddlepaddle/paddlex-genai-vllm-server:latest
     custom_framework: cuda
   latest-dcu:
-    image_name: >-
-      ccr-2vdh3abv-pub.cnc.bj.baidubce.com/paddlepaddle/paddleocr-genai-vllm-server:latest-dcu
-    run_command: ''
-    entrypoint: ''
+    image_name: ccr-2vdh3abv-pub.cnc.bj.baidubce.com/paddlepaddle/paddleocr-genai-vllm-server:latest-dcu
     custom_framework: dtk
   latest-metax-gpu:
-    image_name: >-
-      ccr-2vdh3abv-pub.cnc.bj.baidubce.com/paddlepaddle/paddleocr-genai-fastdeploy-server:latest-metax-gpu
-    run_command: >-
-      paddlex_genai_server --model_name {{model_name}} --model_dir
-      {{model_path}} --host 0.0.0.0 --port {{port}} --backend fastdeploy
-    entrypoint: ''
+    image_name: ccr-2vdh3abv-pub.cnc.bj.baidubce.com/paddlepaddle/paddleocr-genai-fastdeploy-server:latest-metax-gpu
+    run_command: paddlex_genai_server --model_name {{model_name}} --model_dir {{model_path}} --host 0.0.0.0 --port {{port}} --backend fastdeploy
     custom_framework: maca
 default_version: latest
-default_backend_param: []
-default_run_command: >-
-  paddlex_genai_server --model_name {{model_name}} --model_dir {{model_path}}
-  --host 0.0.0.0 --port {{port}} --backend vllm
-default_entrypoint: ''
+default_run_command: paddlex_genai_server --model_name {{model_name}} --model_dir {{model_path}} --host 0.0.0.0 --port {{port}} --backend vllm
 is_built_in: false
-description: null
-health_check_path: null
-built_in_version_configs: {}
 framework_index_map:
   cuda:
     - latest

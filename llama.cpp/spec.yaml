@@ -2,37 +2,23 @@ backend_name: llama.cpp
 version_configs:
   cuda:
     image_name: ghcr.io/ggml-org/llama.cpp:server-cuda
-    run_command: null
-    entrypoint: null
     custom_framework: cuda
   cpu:
     image_name: ghcr.io/ggml-org/llama.cpp:server
-    run_command: null
-    entrypoint: null
     custom_framework: cpu
   vulkan:
     image_name: ghcr.io/ggml-org/llama.cpp:server-vulkan
-    run_command: ''
-    entrypoint: ''
     custom_framework: rocm
   musa:
     image_name: ghcr.io/ggml-org/llama.cpp:server-musa
-    run_command: ''
-    entrypoint: ''
     custom_framework: musa
   rocm:
     image_name: ghcr.io/ggml-org/llama.cpp:server-rocm
-    run_command: ''
-    entrypoint: ''
     custom_framework: rocm
 default_version: cpu
-default_backend_param: []
-default_run_command: '-m {{model_path}} --host 0.0.0.0 --port {{port}} --alias {{model_name}}'
-default_entrypoint: ''
+default_run_command: -m {{model_path}} --host 0.0.0.0 --port {{port}} --alias {{model_name}}
 is_built_in: false
-description: null
 health_check_path: /v1/models
-built_in_version_configs: {}
 framework_index_map:
   cuda:
     - cuda
