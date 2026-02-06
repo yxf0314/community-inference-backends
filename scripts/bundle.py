@@ -1,15 +1,7 @@
 import os
 import base64
 import shutil
-import subprocess
-import sys
-
-try:
-    import yaml
-except ImportError:
-    print("PyYAML not found. Installing...")
-    subprocess.check_call([sys.executable, "-m", "pip", "install", "PyYAML"])
-    import yaml
+import yaml
 
 DIST_DIR = "dist"
 OUTPUT_FILE = os.path.join(DIST_DIR, "community-inference-backends.yaml")
